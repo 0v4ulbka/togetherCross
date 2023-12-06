@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Scheme;
+use yii\bootstrap4\Breadcrumbs;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -10,14 +11,17 @@ use yii\grid\GridView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Мои схемы';
-$this->params['breadcrumbs'][] = $this->title;
+echo Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [$this->title],
+    'options' => ['style'=>'background-color:white; border:solid 2px #cbdde5; margin-bottom:40px'],
+]);
 ?>
 <div class="scheme-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Добавить схему', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить схему', ['create'], ['class' => 'btn btn-secondary btn-sm', 'style'=>'margin:15px 0px']) ?>
     </p>
 
 

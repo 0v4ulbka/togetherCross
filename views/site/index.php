@@ -8,6 +8,7 @@ use yii\grid\GridView;
 
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
+/** @var yii\web\View $this */
 
 $this->title = 'Вместе крестиком';
 ?>
@@ -15,7 +16,7 @@ $this->title = 'Вместе крестиком';
     <?=GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn', 'style'=>'border:none'],
             'avatarname',
             ['attribute' => 'title',
                 'format'=> 'html',
@@ -25,6 +26,7 @@ $this->title = 'Вместе крестиком';
             'description:ntext',
             ['attribute' => 'dateadd',
                 'format' => ['date', 'php:d-m-Y H:i:s']],
+            'user.firstname',
             //'id_category',
             //'id_complexity',
             //'id_user',
@@ -37,4 +39,18 @@ $this->title = 'Вместе крестиком';
             ],*/
         ],
     ]); ?>
+    <div class="card">
+        <div class="image">
+            <img src="" alt="превью схемы">
+        </div>
+        <h2 class="card-title"><?php /*var_dump($model); die();*/?></h2>
+        <div class="desc">
+
+        </div>
+        <div class="caption">
+            <div class="firstname"></div>
+            <p class="datetime"></p>
+        </div>
+    </div>
 </div>
+

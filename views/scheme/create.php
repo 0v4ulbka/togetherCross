@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Scheme $model */
 
-$this->title = 'Create Scheme';
-$this->params['breadcrumbs'][] = ['label' => 'Schemes', 'url' => ['index']];
+$this->title = 'Добавление схемы';
+$this->params['breadcrumbs'][] = ['label' => 'Схемы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="scheme-create">

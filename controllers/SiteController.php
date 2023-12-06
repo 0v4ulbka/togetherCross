@@ -63,6 +63,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $model = Scheme::find()->orderBy('dateadd ASC');
         $dataProvider = new ActiveDataProvider([
             'query' => Scheme::find()
                 ->orderBy('dateadd ASC'),
@@ -70,6 +71,7 @@ class SiteController extends Controller
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 

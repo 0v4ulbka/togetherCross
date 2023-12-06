@@ -5,10 +5,10 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
-use yii\bootstrap5\Breadcrumbs;
-use yii\bootstrap5\Html;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
+use yii\bootstrap4\Breadcrumbs;
+use yii\bootstrap4\Html;
+use yii\bootstrap4\Nav;
+use yii\bootstrap4\NavBar;
 
 AppAsset::register($this);
 
@@ -26,29 +26,29 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-< class="d-flex flex-column h-100">
+<body style="background-color:#ffffff;">
 <?php $this->beginBody() ?>
 
-<header id="header">
+<header>
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+        'options' => ['class' => 'navbar navbar-expand-lg fixed-top navbar-light ml-auto', 'style'=>'background-color: #e3f2fd; border-bottom: solid 2px #cbdde5']
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
+        'options' => ['class' => 'nav nav-pills '],
         'items' => [
             ['label' => 'Главная', 'url' => Yii::$app->homeUrl],
             ['label' => 'Личный кабинет', 'url' => ['/scheme/index'],'visible'=>!Yii::$app->user->isGuest],
             ['label' => 'Регистрация', 'url' => ['/user/create'],'visible'=>Yii::$app->user->isGuest],
             Yii::$app->user->isGuest
                 ? ['label' => 'Вход', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
+                : '<li class="nav nav-pills nav-justified">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
                         'Выход (' . Yii::$app->user->identity->email . ')',
-                        ['class' => 'nav-link btn btn-link logout']
+                        ['class' => 'btn btn-outline-dark',  'style'=>'margin-left:20px; ']
                     )
                     . Html::endForm()
                     . '</li>'
@@ -61,7 +61,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 
 <main id="main" class="flex-shrink-0" role="main">
-    <div class="container">
+    <div class="container" style="background-color:#e3f2fd; margin-top:80px; padding:40px 70px; border-radius:25px; border: solid 2px #cbdde5">
         <?php if (!empty($this->params['breadcrumbs'])): ?>
             <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
         <?php endif ?>
@@ -69,16 +69,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <?= $content ?>
     </div>
 </main>
-
-<footer id="footer" class="mt-auto py-3 bg-light">
-    <div class="container">
-        <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; Вместе крестиком <?= date('Y') ?></div>
-            <!--<div class="col-md-6 text-center text-md-end"><?php /*= Yii::powered() */?></div>-->
-        </div>
-    </div>
-</footer>
-
 <?php $this->endBody() ?>
 </body>
 </html>
